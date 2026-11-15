@@ -1,0 +1,747 @@
+[
+  {
+    "path": "data/source_post_features.parquet",
+    "rows": 59757,
+    "columns": [
+      "tweet_id",
+      "user_id",
+      "treated",
+      "total_corrections",
+      "days2previousNote",
+      "prior_corrections",
+      "user_follower_count",
+      "user_following_count",
+      "user_is_verified",
+      "user_account_age_days",
+      "partisan_score",
+      "misinfo_exposure_score",
+      "days_from_rollout",
+      "UserPostFrequency",
+      "UserPostPositive",
+      "UserPostNegative",
+      "UserPostToxicity",
+      "UserPostMisleadingness",
+      "UserPostConfidence",
+      "UserPostPolitics",
+      "reply_label"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "user_id": "object",
+      "treated": "int64",
+      "total_corrections": "float64",
+      "days2previousNote": "float64",
+      "prior_corrections": "Int64",
+      "user_follower_count": "int32",
+      "user_following_count": "int32",
+      "user_is_verified": "bool",
+      "user_account_age_days": "int64",
+      "partisan_score": "float64",
+      "misinfo_exposure_score": "float64",
+      "days_from_rollout": "int64",
+      "UserPostFrequency": "float64",
+      "UserPostPositive": "float32",
+      "UserPostNegative": "float32",
+      "UserPostToxicity": "float64",
+      "UserPostMisleadingness": "float64",
+      "UserPostConfidence": "float64",
+      "UserPostPolitics": "float64",
+      "reply_label": "int64"
+    },
+    "bytes": 2806036,
+    "sha256": "b42dcc003ad30fb389ed99f9390d4633e4987162bc90e48a4aab607093421894",
+    "inputs": [
+      "source_post_features.parquet"
+    ],
+    "operation": "Select analysis columns; replace text with reply flag / timestamp with ordering rank.",
+    "used_by": [
+      "1_1_data_summary.ipynb"
+    ]
+  },
+  {
+    "path": "data/source_post_features_processed.parquet",
+    "rows": 59757,
+    "columns": [
+      "tweet_id",
+      "user_id",
+      "treated",
+      "note_score",
+      "total_corrections",
+      "current_correction",
+      "days2previousNote",
+      "days2nextNote",
+      "prior_corrections",
+      "control_has_correction_4d",
+      "control_has_correction_8d",
+      "control_has_correction_28d",
+      "control_has_correction_56d",
+      "user_follower_count",
+      "user_following_count",
+      "user_is_verified",
+      "user_account_age_days",
+      "partisan_score",
+      "misinfo_exposure_score",
+      "days_from_rollout",
+      "UserPostFrequency",
+      "UserPostPositive",
+      "UserPostNegative",
+      "UserPostToxicity",
+      "UserPostMisleadingness",
+      "UserPostConfidence",
+      "UserPostPolitics",
+      "event_creation_order",
+      "nmr_eligible_4d",
+      "nmr_count_4d",
+      "nmr_high_score_count_4d",
+      "nmr_eligible_28d",
+      "nmr_count_28d",
+      "nmr_high_score_count_28d",
+      "nmr_eligible_60d",
+      "nmr_count_60d",
+      "nmr_high_score_count_60d",
+      "nmr_eligible_90d",
+      "nmr_count_90d",
+      "nmr_high_score_count_90d",
+      "nmr_eligible_180d",
+      "nmr_count_180d",
+      "nmr_high_score_count_180d"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "user_id": "object",
+      "treated": "int64",
+      "note_score": "float32",
+      "total_corrections": "float64",
+      "current_correction": "float64",
+      "days2previousNote": "float64",
+      "days2nextNote": "float64",
+      "prior_corrections": "Int64",
+      "control_has_correction_4d": "boolean",
+      "control_has_correction_8d": "boolean",
+      "control_has_correction_28d": "boolean",
+      "control_has_correction_56d": "boolean",
+      "user_follower_count": "int32",
+      "user_following_count": "int32",
+      "user_is_verified": "bool",
+      "user_account_age_days": "int64",
+      "partisan_score": "float64",
+      "misinfo_exposure_score": "float64",
+      "days_from_rollout": "int64",
+      "UserPostFrequency": "float64",
+      "UserPostPositive": "float32",
+      "UserPostNegative": "float32",
+      "UserPostToxicity": "float64",
+      "UserPostMisleadingness": "float64",
+      "UserPostConfidence": "float64",
+      "UserPostPolitics": "float64",
+      "event_creation_order": "int64",
+      "nmr_eligible_4d": "bool",
+      "nmr_count_4d": "Int64",
+      "nmr_high_score_count_4d": "Int64",
+      "nmr_eligible_28d": "bool",
+      "nmr_count_28d": "Int64",
+      "nmr_high_score_count_28d": "Int64",
+      "nmr_eligible_60d": "bool",
+      "nmr_count_60d": "Int64",
+      "nmr_high_score_count_60d": "Int64",
+      "nmr_eligible_90d": "bool",
+      "nmr_count_90d": "Int64",
+      "nmr_high_score_count_90d": "Int64",
+      "nmr_eligible_180d": "bool",
+      "nmr_count_180d": "Int64",
+      "nmr_high_score_count_180d": "Int64"
+    },
+    "bytes": 3689833,
+    "sha256": "f21d9bf4786b5fecce40008426ec0b309e30de4df6083672caf22bf01826a556",
+    "inputs": [
+      "source_post_features_processed.parquet"
+    ],
+    "operation": "Select analysis columns; replace text with reply flag / timestamp with ordering rank.",
+    "used_by": [
+      "1_2_pre_correction_nmr_count.ipynb",
+      "2_1_count_analysis_daily.ipynb",
+      "2_2_count_analysis_weekly.ipynb",
+      "2_3_conditional_corrections.ipynb",
+      "2_4_add_correction.ipynb",
+      "3_1_count_analysis_he_features.ipynb",
+      "3_2_count_analysis_he_prior_nmr.ipynb",
+      "3_3_count_analysis_corrected_quality.ipynb",
+      "3_4_count_analysis_deleted_posts.ipynb",
+      "3_5_count_analysis_moral_outrage.ipynb",
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "4_3_content_analysis_he_prior_nmr.ipynb",
+      "5_post_engagement.ipynb"
+    ]
+  },
+  {
+    "path": "data/ts_posts_daily.parquet.gzip",
+    "rows": 3244360,
+    "columns": [
+      "tweet_id",
+      "days_from_display",
+      "tweet_count"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "days_from_display": "int64",
+      "tweet_count": "int64"
+    },
+    "bytes": 2468257,
+    "sha256": "bc0075adeccf2f99af2063c82af031e62dbf500f133f517958c0c56652cf620f",
+    "inputs": [
+      "ts_posts_daily.parquet.gzip"
+    ],
+    "operation": "Values and row order unchanged, except pseudonymous event IDs.",
+    "used_by": [
+      "1_1_data_summary.ipynb",
+      "2_1_count_analysis_daily.ipynb",
+      "3_3_count_analysis_corrected_quality.ipynb",
+      "3_4_count_analysis_deleted_posts.ipynb",
+      "3_5_count_analysis_moral_outrage.ipynb",
+      "4_1_content_analysis.ipynb"
+    ]
+  },
+  {
+    "path": "data/ts_posts_weekly.parquet.gzip",
+    "rows": 463480,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count": "int64"
+    },
+    "bytes": 780000,
+    "sha256": "e7ebe6775f2c457f5a98d564bee11d93b512b979fc2bccf4a0b822dfe3d2d011",
+    "inputs": [
+      "ts_posts_weekly.parquet.gzip"
+    ],
+    "operation": "Values and row order unchanged, except pseudonymous event IDs.",
+    "used_by": [
+      "1_1_data_summary.ipynb",
+      "2_2_count_analysis_weekly.ipynb",
+      "2_3_conditional_corrections.ipynb",
+      "2_4_add_correction.ipynb",
+      "3_1_count_analysis_he_features.ipynb",
+      "3_2_count_analysis_he_prior_nmr.ipynb",
+      "3_3_count_analysis_corrected_quality.ipynb",
+      "3_4_count_analysis_deleted_posts.ipynb",
+      "3_5_count_analysis_moral_outrage.ipynb",
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "4_3_content_analysis_he_prior_nmr.ipynb"
+    ]
+  },
+  {
+    "path": "data/fixed_horizon_accounts.parquet",
+    "rows": 10799,
+    "columns": [
+      "user_id",
+      "available_followup_days",
+      "first_correction_quarter",
+      "missing_history",
+      "eligible_4d",
+      "repeated_within_4d",
+      "eligible_28d",
+      "repeated_within_28d",
+      "eligible_60d",
+      "repeated_within_60d",
+      "eligible_90d",
+      "repeated_within_90d",
+      "eligible_180d",
+      "repeated_within_180d"
+    ],
+    "dtypes": {
+      "user_id": "object",
+      "available_followup_days": "float64",
+      "first_correction_quarter": "string",
+      "missing_history": "bool",
+      "eligible_4d": "bool",
+      "repeated_within_4d": "boolean",
+      "eligible_28d": "bool",
+      "repeated_within_28d": "boolean",
+      "eligible_60d": "bool",
+      "repeated_within_60d": "boolean",
+      "eligible_90d": "bool",
+      "repeated_within_90d": "boolean",
+      "eligible_180d": "bool",
+      "repeated_within_180d": "boolean"
+    },
+    "bytes": 130892,
+    "sha256": "fc5cfe5337005542b92a818e0f01fbcf81b6c334e1a7b86ced2b751a98067e3d",
+    "inputs": [
+      "source_post_features.parquet",
+      "ts_posts_daily.parquet.gzip",
+      "notes_displayed.parquet"
+    ],
+    "operation": "Exact describe_fixed_horizons function from 1_1 cell30; remove exact dates and unused fields.",
+    "used_by": [
+      "1_1_data_summary.ipynb"
+    ]
+  },
+  {
+    "path": "data/extended_correction_accounts.parquet",
+    "rows": 9092,
+    "columns": [
+      "user_id",
+      "total_corrections",
+      "total_corrections_extended",
+      "original_group"
+    ],
+    "dtypes": {
+      "user_id": "object",
+      "total_corrections": "float64",
+      "total_corrections_extended": "int64",
+      "original_group": "object"
+    },
+    "bytes": 55901,
+    "sha256": "4123f3863f5b7c8c113a47fca58b90370b1f8e5a4e096477b064a87f6fdb9539",
+    "inputs": [
+      "source_post_features.parquet",
+      "notes_displayed.parquet",
+      "helpful_tweets_2026-09-27.csv.gz"
+    ],
+    "operation": "1_1 cells35\u201337 unchanged username-based joins before removal of identifiers; only account-level totals released.",
+    "used_by": [
+      "1_1_data_summary.ipynb"
+    ]
+  },
+  {
+    "path": "data/source_corrections_content_matched.parquet",
+    "rows": 7422,
+    "columns": [
+      "tweet_id"
+    ],
+    "dtypes": {
+      "tweet_id": "object"
+    },
+    "bytes": 34052,
+    "sha256": "0969107351ef084c413499547358886239cfe0d4706ae960c7d5d5f0b84ae690",
+    "inputs": [
+      "source_corrections_content_matched.parquet"
+    ],
+    "operation": "Frozen matched event membership only; 4_1 independently re-estimates matching.",
+    "used_by": [
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "5_post_engagement.ipynb"
+    ]
+  },
+  {
+    "path": "data/source_corrections_note_score.parquet",
+    "rows": 9897,
+    "columns": [
+      "tweet_id",
+      "note_score_control"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "note_score_control": "float32"
+    },
+    "bytes": 48260,
+    "sha256": "c8fe43c02c9c9df9471c36aed93f576311e4dc88b2348d5b238f45e793ac2ddd",
+    "inputs": [
+      "source_corrections_note_score.parquet"
+    ],
+    "operation": "Processed sample membership from 2_2 cells51\u201354 and control-note scores; raw note download not required.",
+    "used_by": [
+      "2_2_count_analysis_weekly.ipynb"
+    ]
+  },
+  {
+    "path": "data/deleted_posts_daily.parquet",
+    "rows": 4368,
+    "columns": [
+      "tweet_id",
+      "days_from_display",
+      "tweet_count",
+      "user_id"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "days_from_display": "int64",
+      "tweet_count": "int64",
+      "user_id": "object"
+    },
+    "bytes": 7335,
+    "sha256": "1ee5af571b287a0cc82ccff9fe11f084c936c3c140bedb88088cdc4b2454b54f",
+    "inputs": [
+      "suppl_ts_posts.parquet.gzip",
+      "count_for_deleted_posts.parquet"
+    ],
+    "operation": "Use processed count histories from 3_4 and attach account keys; raw API collection excluded.",
+    "used_by": [
+      "3_4_count_analysis_deleted_posts.ipynb"
+    ]
+  },
+  {
+    "path": "data/deleted_posts_weekly.parquet",
+    "rows": 624,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count",
+      "user_id"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count": "int64",
+      "user_id": "object"
+    },
+    "bytes": 4656,
+    "sha256": "6077df062b4abcc89d2e4cad7ee74902053b5a5d17cef08e0c65517186e0b383",
+    "inputs": [
+      "suppl_ts_posts_weekly.parquet.gzip",
+      "count_for_deleted_posts.parquet"
+    ],
+    "operation": "Use processed count histories from 3_4 and attach account keys; raw API collection excluded.",
+    "used_by": [
+      "3_4_count_analysis_deleted_posts.ipynb"
+    ]
+  },
+  {
+    "path": "data/fact_replies.parquet",
+    "rows": 45593,
+    "columns": [
+      "tweet_id",
+      "moral_outrage_probability",
+      "displayed"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "moral_outrage_probability": "float64",
+      "displayed": "object"
+    },
+    "bytes": 345826,
+    "sha256": "f6e98d2c7063a7d753f35fbe49d306f1570be9e6481a89fc5bcbb43bad905179",
+    "inputs": [
+      "fact_replies.parquet",
+      "source_post_features_processed.parquet"
+    ],
+    "operation": "3_5 cell1 comparison with note display; remove reply text, reply IDs, author fields and timestamps.",
+    "used_by": [
+      "3_5_count_analysis_moral_outrage.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide_high_mis__misleadingness.parquet",
+    "rows": 13943,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_misleadingness_yes",
+      "tweet_count_misleadingness_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_misleadingness_yes": "float64",
+      "tweet_count_misleadingness_no": "float64"
+    },
+    "bytes": 40721,
+    "sha256": "3e88c9cb6184f4ae9de5a77e75cb21d0f603f3b18c33430125a130401b37e1f4",
+    "inputs": [
+      "original_posts_wide_high_mis.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, misleadingness>=0.86 vs <0.86; unobserved sides remain missing.",
+    "used_by": [
+      "4_2_content_analysis_he_high_mis.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide_high_mis_politics__misleadingness.parquet",
+    "rows": 12210,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_misleadingness_yes",
+      "tweet_count_misleadingness_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_misleadingness_yes": "float64",
+      "tweet_count_misleadingness_no": "float64"
+    },
+    "bytes": 38189,
+    "sha256": "28655e8c23c5aaad1416f434abc4434af9f9a2878dd37a31ad855cbb3e512e16",
+    "inputs": [
+      "original_posts_wide_high_mis_politics.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, misleadingness>=0.86 vs <0.86; unobserved sides remain missing.",
+    "used_by": [
+      "4_2_content_analysis_he_high_mis.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide_high_mis_non_politics__misleadingness.parquet",
+    "rows": 13483,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_misleadingness_yes",
+      "tweet_count_misleadingness_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_misleadingness_yes": "float64",
+      "tweet_count_misleadingness_no": "float64"
+    },
+    "bytes": 37794,
+    "sha256": "1e254a33cc75a1fac85280bacd92ad0560616c7c0fd746a9d7160027d522a76c",
+    "inputs": [
+      "original_posts_wide_high_mis_non_politics.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, misleadingness>=0.86 vs <0.86; unobserved sides remain missing.",
+    "used_by": [
+      "4_2_content_analysis_he_high_mis.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide_prior_nmr__misleadingness.parquet",
+    "rows": 18052,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_misleadingness_yes",
+      "tweet_count_misleadingness_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_misleadingness_yes": "float64",
+      "tweet_count_misleadingness_no": "float64"
+    },
+    "bytes": 57339,
+    "sha256": "463aa1c93fa01d8342410836dffafea02c82028bcaca265362421eafd984159a",
+    "inputs": [
+      "original_posts_wide_prior_nmr.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, misleadingness>=0.86 vs <0.86; unobserved sides remain missing.",
+    "used_by": [
+      "4_3_content_analysis_he_prior_nmr.ipynb"
+    ]
+  },
+  {
+    "path": "data/original_post_counts_by_account.parquet",
+    "rows": 18194,
+    "columns": [
+      "user_id",
+      "original_post_count"
+    ],
+    "dtypes": {
+      "user_id": "object",
+      "original_post_count": "int64"
+    },
+    "bytes": 88361,
+    "sha256": "57b6f4fdaf9fa2ba87a24c5f0c0af8884c0b8209e5d68c26550a609e4a4dc829",
+    "inputs": [
+      "original_posts.parquet.gzip"
+    ],
+    "operation": "Number of retrieved rows per account; exactly reproduces 1_1 original-post totals after account membership joins.",
+    "used_by": [
+      "1_1_data_summary.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_narrow__misleadingness.parquet",
+    "rows": 242652,
+    "columns": [
+      "tweet_id",
+      "days_from_display",
+      "tweet_count_misleadingness_yes",
+      "tweet_count_misleadingness_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "days_from_display": "int64",
+      "tweet_count_misleadingness_yes": "float64",
+      "tweet_count_misleadingness_no": "float64"
+    },
+    "bytes": 517170,
+    "sha256": "dfd2992077ae8be3b6c6bab89ed37e742278a17e7aaec1a0b0f58ed4087c96aa",
+    "inputs": [
+      "original_posts_narrow.parquet.gzip",
+      "original_posts_narrow_mis.parquet.gzip",
+      "original_posts_narrow_mis_suppl.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, misleadingness>=0.86 vs <0.86; unobserved sides remain missing. Restrict to focal events available in processed source data; omitted rows never enter the original inner joins.",
+    "omitted_unmatched_event_period_rows": 139,
+    "used_by": [
+      "4_1_content_analysis.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide__positive.parquet",
+    "rows": 281137,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_positive_yes",
+      "tweet_count_positive_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_positive_yes": "float64",
+      "tweet_count_positive_no": "float64"
+    },
+    "bytes": 757306,
+    "sha256": "476028bf142dcaea3b39f12de658f245f44086016cacb3a70f5600160e8d4caf",
+    "inputs": [
+      "original_posts_wide.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, positive>=0.5 vs <0.5; unobserved sides remain missing. Restrict to focal events available in processed source data; omitted rows never enter the original inner joins.",
+    "omitted_unmatched_event_period_rows": 174,
+    "used_by": [
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "4_3_content_analysis_he_prior_nmr.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide__negative.parquet",
+    "rows": 281137,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_negative_yes",
+      "tweet_count_negative_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_negative_yes": "float64",
+      "tweet_count_negative_no": "float64"
+    },
+    "bytes": 784804,
+    "sha256": "dd613c9bbe9a39968f10814415454e106d87a324c8644f9e819fd94b6804becc",
+    "inputs": [
+      "original_posts_wide.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, negative>=0.5 vs <0.5; unobserved sides remain missing. Restrict to focal events available in processed source data; omitted rows never enter the original inner joins.",
+    "omitted_unmatched_event_period_rows": 174,
+    "used_by": [
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "4_3_content_analysis_he_prior_nmr.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide__toxicity.parquet",
+    "rows": 281137,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_toxicity_yes",
+      "tweet_count_toxicity_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_toxicity_yes": "float64",
+      "tweet_count_toxicity_no": "float64"
+    },
+    "bytes": 641277,
+    "sha256": "c422f7c35160fb590c41197c9f5b756583c5c02018ba6d56f60c34d636057384",
+    "inputs": [
+      "original_posts_wide.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, toxicity>=0.5 vs <0.5; unobserved sides remain missing. Restrict to focal events available in processed source data; omitted rows never enter the original inner joins.",
+    "omitted_unmatched_event_period_rows": 174,
+    "used_by": [
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "4_3_content_analysis_he_prior_nmr.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide__politics_is.parquet",
+    "rows": 281137,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_politics_is_yes",
+      "tweet_count_politics_is_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_politics_is_yes": "float64",
+      "tweet_count_politics_is_no": "float64"
+    },
+    "bytes": 736017,
+    "sha256": "210f110cf1b2317456a1aba1d11db7d5a47028f3bf1314ee0042fa9a4e2a6956",
+    "inputs": [
+      "original_posts_wide.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, politics_is>=1 vs <1; unobserved sides remain missing. Restrict to focal events available in processed source data; omitted rows never enter the original inner joins.",
+    "omitted_unmatched_event_period_rows": 174,
+    "used_by": [
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "4_3_content_analysis_he_prior_nmr.ipynb"
+    ]
+  },
+  {
+    "path": "data/content_counts/original_posts_wide__confidence.parquet",
+    "rows": 268269,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "tweet_count_confidence_yes",
+      "tweet_count_confidence_no"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "tweet_count_confidence_yes": "float64",
+      "tweet_count_confidence_no": "float64"
+    },
+    "bytes": 672307,
+    "sha256": "3974d1d13296d1af525c3176b094af1e1c62a2bdabc6f446b9e903e3eb663c82",
+    "inputs": [
+      "original_posts_wide.parquet.gzip",
+      "original_post_confidence.parquet.gzip"
+    ],
+    "operation": "Exact prepare_content_count group/count/outer-merge, confidence>=6.5 vs <6.5; unobserved sides remain missing. Restrict to focal events available in processed source data; omitted rows never enter the original inner joins.",
+    "omitted_unmatched_event_period_rows": 153,
+    "used_by": [
+      "4_1_content_analysis.ipynb",
+      "4_2_content_analysis_he_high_mis.ipynb",
+      "4_3_content_analysis_he_prior_nmr.ipynb"
+    ]
+  },
+  {
+    "path": "data/post_engagement_weekly.parquet",
+    "rows": 281137,
+    "columns": [
+      "tweet_id",
+      "weeks_from_display",
+      "user_tweet_retweets",
+      "user_tweet_replies"
+    ],
+    "dtypes": {
+      "tweet_id": "object",
+      "weeks_from_display": "int64",
+      "user_tweet_retweets": "int64",
+      "user_tweet_replies": "int64"
+    },
+    "bytes": 941962,
+    "sha256": "3a6a354d8d57763999e9fa8f457176a3890e321ec783eafe372cc6958c9fbb30",
+    "inputs": [
+      "original_posts_wide.parquet.gzip"
+    ],
+    "operation": "6 cell3: mean repost/reply counts per event-week, rounded with Python round as in original analysis. Restrict to focal events available in processed source data; omitted rows never enter the original inner joins.",
+    "omitted_unmatched_event_period_rows": 174,
+    "used_by": [
+      "5_post_engagement.ipynb"
+    ]
+  }
+]

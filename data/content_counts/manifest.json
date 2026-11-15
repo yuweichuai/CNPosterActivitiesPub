@@ -1,0 +1,72 @@
+[
+  {
+    "source_alias": "original_posts_wide_high_mis.parquet.gzip",
+    "variable": "misleadingness",
+    "time_column": "weeks_from_display",
+    "threshold": 0.86,
+    "path": "data/content_counts/original_posts_wide_high_mis__misleadingness.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide_high_mis_politics.parquet.gzip",
+    "variable": "misleadingness",
+    "time_column": "weeks_from_display",
+    "threshold": 0.86,
+    "path": "data/content_counts/original_posts_wide_high_mis_politics__misleadingness.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide_high_mis_non_politics.parquet.gzip",
+    "variable": "misleadingness",
+    "time_column": "weeks_from_display",
+    "threshold": 0.86,
+    "path": "data/content_counts/original_posts_wide_high_mis_non_politics__misleadingness.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide_prior_nmr.parquet.gzip",
+    "variable": "misleadingness",
+    "time_column": "weeks_from_display",
+    "threshold": 0.86,
+    "path": "data/content_counts/original_posts_wide_prior_nmr__misleadingness.parquet"
+  },
+  {
+    "source_alias": "original_posts_narrow.parquet.gzip",
+    "variable": "misleadingness",
+    "time_column": "days_from_display",
+    "threshold": 0.86,
+    "path": "data/content_counts/original_posts_narrow__misleadingness.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide.parquet.gzip",
+    "variable": "positive",
+    "time_column": "weeks_from_display",
+    "threshold": 0.5,
+    "path": "data/content_counts/original_posts_wide__positive.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide.parquet.gzip",
+    "variable": "negative",
+    "time_column": "weeks_from_display",
+    "threshold": 0.5,
+    "path": "data/content_counts/original_posts_wide__negative.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide.parquet.gzip",
+    "variable": "toxicity",
+    "time_column": "weeks_from_display",
+    "threshold": 0.5,
+    "path": "data/content_counts/original_posts_wide__toxicity.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide.parquet.gzip",
+    "variable": "politics_is",
+    "time_column": "weeks_from_display",
+    "threshold": 1,
+    "path": "data/content_counts/original_posts_wide__politics_is.parquet"
+  },
+  {
+    "source_alias": "original_posts_wide.parquet.gzip",
+    "variable": "confidence",
+    "time_column": "weeks_from_display",
+    "threshold": 6.5,
+    "path": "data/content_counts/original_posts_wide__confidence.parquet"
+  }
+]

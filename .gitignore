@@ -1,0 +1,8 @@
+# Local editor files, environments, and regenerated outputs
+.DS_Store
+.idea/
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.venv/
+outputs/
